@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products | ChemSus Technologies Pvt Ltd</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0074c7;
+      --primary-dark: #00508a;
+      --accent: #00b8b0;
+      --bg: #F3F7FB;
+      --ink: #1f2933;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Open Sans", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAVBAR (same family as other pages) */
+    .navbar {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 0;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 0 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: "Montserrat", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      font-size: 15px;
+    }
+
+    .nav-menu a {
+      color: #fff;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-menu a.active,
+    .nav-menu a:hover {
+      border-color: #fff;
+    }
+
+    /* HERO – same frame style as index/investors */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, #052b3f, #031521);
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      border-top: 3px solid var(--accent);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 12% 25%, rgba(255,255,255,0.08) 0, rgba(255,255,255,0.08) 2px, transparent 3px),
+        radial-gradient(circle at 82% 70%, rgba(255,255,255,0.08) 0, rgba(255,255,255,0.08) 2px, transparent 3px);
+      background-size: 160px 160px;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+      padding: 0 20px;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: #b9e6ff;
+    }
+
+    .hero-title {
+      font-family: "Montserrat", sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: #e2f3ff;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 40px 18px;
+    }
+
+    .section {
+      background: #fff;
+      padding: 34px;
+      border-radius: 14px;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.12);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 26px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .section-tagline {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-top: 24px;
+    }
+
+    .product-card {
+      background: #f9fbff;
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+      border-top: 4px solid var(--accent);
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: 140px;
+      object-fit: contain;
+      margin-bottom: 14px;
+    }
+
+    .product-card h3 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #374151;
+    }
+
+    footer {
+      background: #06121f;
+      color: #cbd5f5;
+      font-size: 13px;
+      text-align: center;
+      padding: 14px 0;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 700px) {
+      .hero-title { font-size: 32px; }
+    }
+
+    @media (max-width: 580px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .nav-menu {
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">ChemSus Technologies Pvt Ltd</div>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="recognitions.html">Recognitions</a></li>
+      <li><a href="investors.html">Investors</a></li>
+      <li><a href="contact.html">Contact us</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO (matching frame) -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-kicker">BIO-BASED SPECIALTY MOLECULES</div>
+    <h1 class="hero-title">Products</h1>
+    <p class="hero-subtitle">
+      A focused portfolio of biomass‑derived building blocks and preservatives for nutraceutical, food, cosmetic and industrial applications.
+    </p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>Our Product Portfolio</h2>
+      <p class="section-tagline">
+        Platform molecules and formulated ingredients developed from renewable lignocellulosic biomass.
+      </p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="assets/chemical1.jpeg" alt="5-Hydroxymethylfurfural">
+        <h3>5‑Hydroxymethylfurfural (5‑HMF)</h3>
+        <p>
+          A biomass‑derived platform chemical used in fuels, polymers,
+          pharmaceuticals and specialty materials.
+        </p>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="assets/chemical2.jpeg" alt="Calcium Levulinate">
+        <h3>Calcium Levulinate</h3>
+        <p>
+          A nutraceutical‑grade calcium salt with high bioavailability,
+          developed from renewable lignocellulosic resources.
+        </p>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="assets/chemical3.jpeg" alt="Sodium Levulinate">
+        <h3>Sodium Levulinate</h3>
+        <p>
+          A biodegradable preservative suitable for food, cosmetic
+          and personal‑care applications.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 ChemSus Technologies Pvt Ltd. All rights reserved.
+</footer>
+
+</body>
+</html>
