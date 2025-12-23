@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ChemSus Technologies Pvt Ltd | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0074c7;
+      --primary-dark: #00508a;
+      --accent: #00b8b0;
+      --bg: #F3F7FB;
+      --ink: #1f2933;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Open Sans", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--ink);
+      background-color: var(--bg);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 12px 0;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      font-size: 15px;
+    }
+
+    .nav-menu li a {
+      color: #ffffff;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-menu li a.active,
+    .nav-menu li a:hover {
+      border-color: #ffffff;
+    }
+
+    /* HERO – same frame as Investors */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, #052b3f, #031521);
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      border-top: 3px solid var(--accent);
+    }
+
+    /* soft dotted “molecule” pattern */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 12% 25%, rgba(255,255,255,0.08) 0, rgba(255,255,255,0.08) 2px, transparent 3px),
+        radial-gradient(circle at 82% 70%, rgba(255,255,255,0.08) 0, rgba(255,255,255,0.08) 2px, transparent 3px);
+      background-size: 160px 160px;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 0 20px;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: #b9e6ff;
+    }
+
+    .hero-title {
+      font-family: "Montserrat", sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: #e2f3ff;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 40px 18px;
+    }
+
+    .section {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 14px;
+      box-shadow: 0 12px 28px rgba(15,23,42,0.12);
+      margin-bottom: 36px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 26px;
+      color: var(--primary-dark);
+    }
+
+    .section-chip {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: #e0f7f6;
+      color: #04726d;
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .section p {
+      font-size: 15px;
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    /* OBJECTIVE LAYOUT */
+    .objective-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .objective-logo {
+      text-align: center;
+    }
+
+    .objective-logo-inner {
+      background: #f2fbff;
+      border-radius: 12px;
+      padding: 18px 14px;
+      border: 1px solid #e0f2ff;
+      display: inline-block;
+    }
+
+    .objective-logo img {
+      max-width: 200px;
+      height: auto;
+    }
+
+    /* FEATURE CARDS */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      margin-top: 18px;
+    }
+
+    .feature {
+      background: #f1f9ff;
+      padding: 22px;
+      border-radius: 12px;
+      border-top: 4px solid var(--accent);
+    }
+
+    .feature h3 {
+      font-family: "Montserrat", sans-serif;
+      font-size: 18px;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: #374151;
+    }
+
+    /* Icon row */
+    .icon-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+      font-size: 12px;
+      color: #4b5563;
+    }
+
+    .icon-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #edf2ff;
+    }
+
+    .icon-pill svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--primary-dark);
+    }
+
+    footer {
+      background-color: #06121f;
+      color: #cbd5f5;
+      font-size: 13px;
+      text-align: center;
+      padding: 14px 0;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .objective-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .nav-menu {
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: 14px;
+      }
+      .hero-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">ChemSus Technologies Pvt Ltd</div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="recognitions.html">Recognitions</a></li>
+        <li><a href="investors.html">Investors</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO (same frame as Investors) -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-kicker">RENEWABLE BIOMASS TO CHEMISTRY</div>
+      <h1 class="hero-title">Lignocellulose‑based Specialty Chemicals</h1>
+      <p class="hero-subtitle">
+        Sustainable, green and future‑ready chemical solutions derived from renewable biomass for health, food and industrial applications.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- OBJECTIVE -->
+    <section class="section">
+      <div class="objective-grid">
+        <div class="objective-logo">
+          <div class="objective-logo-inner">
+            <!-- replace with actual logo -->
+            <img src="assets/logo.jpeg" alt="ChemSus Logo">
+          </div>
+        </div>
+
+        <div>
+          <div class="section-header">
+            <h2>Objective</h2>
+            <span class="section-chip">Our mission</span>
+          </div>
+          <p>
+            To develop sustainable, green and futuristic chemical processes using renewable
+            lignocellulosic biomass.
+          </p>
+          <p>
+            ChemSus Technologies focuses on the development of specialty chemicals including
+            cosmetic and food preservatives, disinfectants, active pharmaceutical ingredients,
+            anti‑corrosion agents, pesticides and ingredients for paints, inks and polymers.
+          </p>
+          <p>
+            Our processes emphasize eco‑friendly chemistry, scalability and reduced dependence
+            on fossil‑based resources.
+          </p>
+
+          <div class="icon-row">
+            <span class="icon-pill">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 2v2.5l-3.6 6.2A4.5 4.5 0 0 0 9.5 18h5a4.5 4.5 0 0 0 4.1-7.3L15 4.5V2h-2v3.1l3.2 5.5A2.5 2.5 0 0 1 14.5 16h-5a2.5 2.5 0 0 1-2.2-3.8L10 5.1V2H9z"/>
+              </svg>
+              Green process development
+            </span>
+            <span class="icon-pill">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 4a3 3 0 1 0 2.92 3.55l2.16 1.25a3 3 0 1 0 .04 3.4l2.2 1.27A3 3 0 1 0 17 12a3 3 0 0 0-.46.04l-2.2-1.27A3 3 0 0 0 9.92 7.6L7.76 6.34A3 3 0 0 0 7 4z"/>
+              </svg>
+              Biomass‑derived intermediates
+            </span>
+            <span class="icon-pill">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2 5 5v6c0 5 3.4 9.3 7 11 3.6-1.7 7-6 7-11V5l-7-3zm0 2.2 5 2.2v4.6c0 3.9-2.3 7.5-5 9.1-2.7-1.6-5-5.2-5-9.1V6.4l5-2.2z"/>
+              </svg>
+              Reduced fossil dependence
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section">
+      <div class="section-header">
+        <h2>What We Focus On</h2>
+        <span class="section-chip">Core areas</span>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <h3>Sustainable Chemistry</h3>
+          <p>Green processes built on renewable lignocellulosic biomass, designed for lower carbon footprint and circular use of resources.</p>
+        </div>
+        <div class="feature">
+          <h3>Specialty Chemicals</h3>
+          <p>High‑value products for pharmaceutical, food, cosmetic and industrial applications, with strong emphasis on performance and safety.</p>
+        </div>
+        <div class="feature">
+          <h3>Industrial Scale‑up</h3>
+          <p>End‑to‑end development from laboratory research through pilot‑scale validation to commercial deployment with partners.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 ChemSus Technologies Pvt Ltd. All rights reserved.
+  </footer>
+
+</body>
+</html>
