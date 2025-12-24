@@ -257,7 +257,7 @@
       margin-bottom: 6px;
     }
 
-    .form-input {
+    .form-input, .form-select {
       width: 100%;
       padding: 12px 14px;
       border: 2px solid #e2e8f0;
@@ -268,7 +268,7 @@
       background: #ffffff;
     }
 
-    .form-input:focus {
+    .form-input:focus, .form-select:focus {
       outline: none;
       border-color: var(--accent);
       box-shadow: 0 0 0 3px rgba(0,184,176,0.1);
@@ -428,8 +428,8 @@
       <span class="section-chip">Evaluation Samples</span>
     </div>
     <p class="section-intro">
-      Fill out the form below to request evaluation samples of our pharmaceutical-grade levulinic acid derivatives and preservatives. 
-      Our team will review your application and arrange sample dispatch within 3-5 business days.
+      Fill out the form below to request evaluation samples of our product. 
+      Our team will review and discuss with you and dispatch the sample.
     </p>
 
     <div class="form-container">
@@ -476,6 +476,18 @@
           </div>
         </div>
 
+        <!-- NEW ORDER FREQUENCY FIELD ADDED -->
+        <div class="form-group full-width">
+          <label class="form-label" for="orderFrequency">Order Frequency</label>
+          <select id="orderFrequency" class="form-select" name="orderFrequency" required>
+            <option value="">Select order frequency</option>
+            <option value="one-time">One-time evaluation</option>
+            <option value="monthly">Monthly recurring</option>
+            <option value="quarterly">Quarterly recurring</option>
+            <option value="other">Other (please specify)</option>
+          </select>
+        </div>
+
         <button type="submit" class="form-submit">Submit Sample Request</button>
       </form>
     </div>
@@ -516,7 +528,7 @@
       }
     });
 
-    // Form submission handler
+    // Form submission handler - UPDATED TO INCLUDE ORDER FREQUENCY
     document.getElementById('sampleRequestForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -527,9 +539,7 @@
       // Scroll to success message
       document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
       
-      // Here you would typically send the form data to your backend
-      // For demo purposes, just show success message
-      
+      // Log all form data including new order frequency field
       console.log('Form submitted:', {
         companyName: document.getElementById('companyName').value,
         individualName: document.getElementById('individualName').value,
@@ -537,7 +547,8 @@
         phone: document.getElementById('phone').value,
         intendedUse: document.getElementById('intendedUse').value,
         quantity: document.getElementById('quantity').value,
-        timeline: document.getElementById('timeline').value
+        timeline: document.getElementById('timeline').value,
+        orderFrequency: document.getElementById('orderFrequency').value
       });
     });
   </script>

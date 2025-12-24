@@ -283,6 +283,12 @@
       margin-bottom: 6px;
     }
 
+    .form-label.required::after {
+      content: " *";
+      color: #ef4444;
+      font-weight: 700;
+    }
+
     .form-input {
       width: 100%;
       padding: 12px 14px;
@@ -359,15 +365,6 @@
 
     .form-group.full-width {
       grid-column: 1 / -1;
-    }
-
-    .role-select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-      background-position: right 12px center;
-      background-repeat: no-repeat;
-      background-size: 16px;
-      padding-right: 40px;
     }
 
     footer {
@@ -458,9 +455,7 @@
     <div class="hero-content">
       <div class="hero-kicker">Place Your Order</div>
       <h1 class="hero-title">Orders</h1>
-      <p class="hero-subtitle">
-        Secure ordering platform for our sustainable bamboo-derived chemicals.
-      </p>
+
     </div>
   </section>
 
@@ -468,7 +463,6 @@
   <main>
     <div class="section-header">
       <h2>Place Order</h2>
-      <span class="section-chip">B2B Orders</span>
     </div>
     <p class="section-intro">
       Please register or login to place bulk orders for our pharmaceutical-grade levulinic acid derivatives and preservatives.
@@ -481,31 +475,68 @@
         <button class="auth-tab" onclick="showAuthForm('login')">Login</button>
       </div>
 
-      <!-- REGISTER FORM -->
+      <!-- UPDATED REGISTER FORM -->
       <form class="auth-form active" id="registerForm">
-        <div class="form-group">
-          <label class="form-label" for="regEmail">Email ID</label>
-          <input type="email" id="regEmail" class="form-input" required>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label required" for="regName">Name of the person</label>
+            <input type="text" id="regName" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label required" for="regDesignation">Designation</label>
+            <input type="text" id="regDesignation" class="form-input" placeholder="e.g., Procurement Manager" required>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="regPassword">Password</label>
-          <input type="password" id="regPassword" class="form-input" required>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label required" for="regCompany">Company Name</label>
+            <input type="text" id="regCompany" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label required" for="regEmail">Email ID</label>
+            <input type="email" id="regEmail" class="form-input" required>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label" for="regCompany">Company Name</label>
-          <input type="text" id="regCompany" class="form-input" required>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label required" for="regContact">Contact No</label>
+            <input type="tel" id="regContact" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label required" for="regProduct">Product Details</label>
+            <input type="text" id="regProduct" class="form-input" placeholder="e.g., Calcium Levulinate" required>
+          </div>
         </div>
+
+        <div class="form-group full-width">
+          <label class="form-label required" for="regBusiness">Main Business of the company</label>
+          <textarea id="regBusiness" class="form-textarea" placeholder="Describe your company's main business activities" required></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label required" for="regPassword">Password</label>
+            <input type="password" id="regPassword" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label required" for="regConfirmPassword">Confirm Password</label>
+            <input type="password" id="regConfirmPassword" class="form-input" required>
+          </div>
+        </div>
+
         <button type="submit" class="auth-submit">Register & Continue</button>
       </form>
 
-      <!-- LOGIN FORM -->
+      <!-- LOGIN FORM (Simplified) -->
       <form class="auth-form" id="loginForm">
         <div class="form-group">
-          <label class="form-label" for="loginEmail">Email ID</label>
+          <label class="form-label required" for="loginEmail">Email ID</label>
           <input type="email" id="loginEmail" class="form-input" required>
         </div>
         <div class="form-group">
-          <label class="form-label" for="loginPassword">Password</label>
+          <label class="form-label required" for="loginPassword">Password</label>
           <input type="password" id="loginPassword" class="form-input" required>
         </div>
         <button type="submit" class="auth-submit">Login & Continue</button>
@@ -544,7 +575,7 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="role">Role</label>
-            <select id="role" class="form-input role-select" required>
+            <select id="role" class="form-input" required>
               <option value="">Select your role</option>
               <option value="procurement">Procurement/Purchasing</option>
               <option value="r-and-d">R&D/Technical</option>
@@ -619,14 +650,29 @@
       }
     }
 
-    // Register form handler
+    // Register form handler with password confirmation
     document.getElementById('registerForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      
+      const password = document.getElementById('regPassword').value;
+      const confirmPassword = document.getElementById('regConfirmPassword').value;
+      
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+      
       // Simulate registration success
       showOrderForm();
       console.log('Registration:', {
+        name: document.getElementById('regName').value,
+        designation: document.getElementById('regDesignation').value,
+        company: document.getElementById('regCompany').value,
         email: document.getElementById('regEmail').value,
-        company: document.getElementById('regCompany').value
+        contact: document.getElementById('regContact').value,
+        product: document.getElementById('regProduct').value,
+        business: document.getElementById('regBusiness').value,
+        password: password
       });
     });
 
